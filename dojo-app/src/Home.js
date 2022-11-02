@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import BlockList from './BlogList'
 
 const Home = () => {
@@ -12,6 +12,11 @@ const Home = () => {
     const newBlogs = blogs.filter((blog) => blog.id !== id);
     setBlog(newBlogs);
   }
+
+  useEffect(() => {
+    console.log('Yes you are right');
+    // console.log(blogs);
+  });
 
   return (
     <div className="home">
