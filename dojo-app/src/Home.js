@@ -8,11 +8,15 @@ const Home = () => {
     {title: "How to clearn", body: "This is lrom", author: "Usman Ali", "id": 3},
   ])
 
+  const handleDelete = (id) => {
+    const newBlogs = blogs.filter((blog) => blog.id !== id);
+    setBlog(newBlogs);
+  }
+
   return (
     <div className="home">
       <h1>HomePage</h1>
-      <BlockList blogs={blogs} title="All blogs" />
-      <BlockList blogs={blogs.filter((blog) => blog.author === 'Usman Ali')} title="Secondly all blogs"/>
+      <BlockList blogs={blogs} title="All blogs" handleDelete={handleDelete}/>
     </div>
   );
 };
