@@ -7,6 +7,7 @@ const Home = () => {
     {title: "How to glearn", body: "This is lrom", author: "Umer Abdullah", "id": 2},
     {title: "How to clearn", body: "This is lrom", author: "Usman Ali", "id": 3},
   ])
+  const [name, setName] = useState('Usman')
 
   const handleDelete = (id) => {
     const newBlogs = blogs.filter((blog) => blog.id !== id);
@@ -15,13 +16,14 @@ const Home = () => {
 
   useEffect(() => {
     console.log('Yes you are right');
-    // console.log(blogs);
-  });
+  }, [name]);
 
   return (
     <div className="home">
       <h1>HomePage</h1>
       <BlockList blogs={blogs} title="All blogs" handleDelete={handleDelete}/>
+      <button onClick={() => {setName('Ali')}}>Click here</button>
+      <p>{name}</p>
     </div>
   );
 };
