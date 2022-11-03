@@ -4,6 +4,7 @@ import BlockList from './BlogList'
 const Home = () => {
   const [blogs, setBlog] = useState(null)
   const [name, setName] = useState('Usman')
+  const [isPending, setIsPending] = useState(true)
 
   useEffect(() => {
     fetch('http://localhost:8000/blogs')
@@ -12,12 +13,14 @@ const Home = () => {
       })
       .then(data => {
         setBlog(data);
+        setIsPending(false);
       })
   }, []);
 
   return (
     <div className="home">
       <h1>HomePage</h1>
+      {isPending && <div>Loading...</div>}
       {blogs && <BlockList blogs={blogs} title="All blogs"/>}
       <button onClick={() => {setName('Ali')}}>Click here</button>
       <p>{name}</p>
